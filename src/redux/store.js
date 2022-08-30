@@ -33,7 +33,7 @@ const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         })
-        .concat(logger)
+        // .concat(logger)
         .concat(apiService.middleware),
 });
 const persistor = persistStore(store);

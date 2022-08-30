@@ -27,6 +27,8 @@ export const contactApi = createApi({
                 method: 'POST',
                 body: contact,
             }),
+            transformResponse: response => response,
+            invalidatesTags: ['Contacts'],
         }),
     }),
 });

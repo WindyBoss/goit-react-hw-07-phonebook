@@ -45,7 +45,7 @@ export default function ContactSuccess({ contacts }) {
       <div>
         {showModal && (
           <Modal onClose={toggleModal}>
-            <ContactForm onClick={toggleModal} />
+            <ContactForm onClick={toggleModal} contacts={contacts}/>
           </Modal>
         )}
 

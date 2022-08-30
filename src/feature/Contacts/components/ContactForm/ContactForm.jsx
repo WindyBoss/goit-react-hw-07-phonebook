@@ -5,6 +5,9 @@ import SendIcon from '@mui/icons-material/Send';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
+import toast from 'react-hot-toast';
 
 import {
   LabelContainer,
@@ -24,7 +27,7 @@ const schema = yup
   })
   .required();
 
-export default function ContactForm({ onClick }) {
+export default function ContactForm({ onClick, contacts }) {
   const [addContact] = useAddContactMutation();
 
   const {
@@ -35,7 +38,17 @@ export default function ContactForm({ onClick }) {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = data => {
+    if (
+      contacts.find(
+        contact => contact.name === data.name || contact.number === data.number
+      )
+    ) {
+      toast.error('The contact is already registered');
+      return;
+    }
+
     addContact(data);
+    toast.success('The contact was successfully added');
     reset();
     onClick();
   };

@@ -21,7 +21,7 @@ export default function ContactSuccess({ contacts }) {
 
   function getContacts() {
     if (contacts.length === 0) {
-      return;
+      return [];
     }
 
     const normalizedFilter = filter.toLowerCase();

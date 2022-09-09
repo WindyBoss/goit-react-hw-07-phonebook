@@ -12,7 +12,7 @@ function Contacts() {
   const { data, isLoading, isSuccess, isError, error } = useGetContactsQuery();
 
   useEffect(() => {
-    setContacts(data);
+    data && setContacts(data);
   }, [data]);
 
   let context = '';

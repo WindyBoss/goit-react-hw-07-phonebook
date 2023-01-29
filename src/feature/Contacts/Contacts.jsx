@@ -17,7 +17,7 @@ function Contacts() {
 
   let context = '';
 
-  if (isSuccess && contacts.length > 0) {
+  if (isSuccess && contacts?.length > 0) {
     context = <ContactSuccess contacts={contacts} />;
   } else if (isLoading) {
     context = <Pending />;
